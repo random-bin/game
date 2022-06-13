@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <H1>GRA Z KOMPUTEREM</H1>
+        
+        <div>
+            <h3>Kliknij przycisk</h3>
+            <button onClick="play(0)">PAPIER</button>
+            <button onClick="play(1)">NOŻYCE</button>
+            <button onClick="play(2)">KAMIEŃ</button>
+            
+        </div>
+        
+        <div>
+            <p>Twój wybór:</p>
+            <p id="userChoicePar"></p>
+            <p>Wybór komputera:</p>
+            <p id="compChoicePar"></p>
+            <br>
+            <p>Wynik:</p>
+            <p id="result"></p>
+        </div>
+
+        <script>
+            
+        function play(value){
+
+            var choiceArr = ["PAPIER", "NOŻYCE", "KAMIEŃ"];
+
+            // Computer choice shuffle
+
+            function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+            let computerChoice = choiceArr[getRandomIntInclusive(0, 2)];
+
+            document.getElementById("compChoicePar").innerHTML = computerChoice;
+
+            // User choice
+
+            let userChoice = choiceArr[value];
+            document.getElementById("userChoicePar").innerHTML = userChoice;
+
+            // Victory logic
+
+            if (userChoice == computerChoice) {
+            document.getElementById("result").innerHTML = "REMIS";
+            } 
+            if (userChoice == "KAMIEŃ" & computerChoice == "PAPIER") {
+            document.getElementById("result").innerHTML = "PRZEGRAŁEŚ";
+            } 
+            if (userChoice == "NOŻYCE" & computerChoice == "KAMIEŃ") {
+            document.getElementById("result").innerHTML = "PRZEGRAŁEŚ";
+            } 
+            if (userChoice == "PAPIER" & computerChoice == "NOŻYCE") {
+            document.getElementById("result").innerHTML = "PRZEGRAŁEŚ";
+            } 
+            if (userChoice == "KAMIEŃ" & computerChoice == "NOŻYCE") {
+            document.getElementById("result").innerHTML = "WYGRAŁEŚ";
+            } 
+            if (userChoice == "NOŻYCE" & computerChoice == "PAPIER") {
+            document.getElementById("result").innerHTML = "WYGRAŁEŚ";
+            } 
+            if (userChoice == "PAPIER" & computerChoice == "KAMIEŃ") {
+            document.getElementById("result").innerHTML = "WYGRAŁEŚ";
+            
+            }
+        } 
+
+        </script>
+    </body>
+</html>
